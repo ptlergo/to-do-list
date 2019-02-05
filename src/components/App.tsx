@@ -62,10 +62,10 @@ export class App extends React.Component<{}, IState> {
   public renderTasks(): JSX.Element[] {
     return this.state.tasks.map((task: ITask, index: number) => {
       return (
-        <div key={task.id}>
-          <span>{task.value}</span>
+        <div key={task.id} className="tdl-task">
+          <span className={task.completed ? "is-completed" : ""}>{task.value}</span>
           <button onClick={() => this.deleteTask(task.id)}>Delete</button>
-          <button onClick={() => this.toggleDone(index)}>Done</button>
+          <button onClick={() => this.toggleDone(index)}>{task.completed ? "undo": "done"}</button>
         </div>
       );
     });
@@ -80,6 +80,7 @@ export class App extends React.Component<{}, IState> {
           <input
             type="text"
             placeholder="add a task"
+            className="tdl-input"
             value={this.state.currentTask}
             onChange={e => this.setState({ currentTask: e.target.value })}
           />
@@ -94,7 +95,7 @@ export class App extends React.Component<{}, IState> {
     return (
       <div>
         {this.renderHtml()}
-        {/* <DisplayTask tasks={this.state.tasks} /> */}
+        <DisplayTask tasks={this.state.tasks} />
       </div>
     );
   }
