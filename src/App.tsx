@@ -21,7 +21,6 @@ export class App extends React.Component<{}, IState> {
     };
   }
 
-
   // public method because its affecting html
   // * i dont think its good to use splice as its mutating the original array
   // splice changes the contents of an array by replace/remove existing elements and/or adding new ones
