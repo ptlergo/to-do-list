@@ -1,10 +1,10 @@
-import * as React from "react"
-import * as ReactDom from "react-dom"
+import * as React from "react";
+import * as ReactDom from "react-dom";
 
 import "./styles/style.scss";
 
-import {App} from "./components/App"
+import { App } from "./App";
 
-const ROOT = document.querySelector("#root")
+const ROOT = document.querySelector("#root");
 
-ReactDom.render(<App />, ROOT)
+ReactDom.render(<App />, ROOT);
