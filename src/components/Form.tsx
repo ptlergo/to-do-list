@@ -1,17 +1,18 @@
 import * as React from "react";
+import { IFormProps } from "../App";
 
-export default (props: any) => {
-  const { onSubmit, state, onChange } = props;
+export default (props: IFormProps) => {
+  const { handleSubmit, currentTask, handleChange } = props;
   return (
     <form>
       <input
         type="text"
         placeholder="add a task"
         className="tdl-input"
-        value={state.currentTask}
-        onChange={onChange}
+        value={currentTask}
+        onChange={handleChange}
       />
-      <button onClick={onSubmit}>Add Task</button>
+      <button onClick={handleSubmit}>Add Task</button>
     </form>
   );
 };

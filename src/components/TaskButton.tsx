@@ -1,7 +1,8 @@
 import * as React from "react";
+import { ITaskButtonProps } from "./DisplayTask";
 
-export default (props: any) => {
-  const { action, type, taskStatus } = props.config;
+export default (props: ITaskButtonProps) => {
+  const { action, type, taskStatus } = props;
 
   const renderToggleButton = (): any => (
     <button onClick={action}>{taskStatus ? "undo" : "done"}</button>

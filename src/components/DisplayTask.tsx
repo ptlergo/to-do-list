@@ -1,36 +1,37 @@
 import * as React from "react";
 import { TaskButton } from "./";
+import { IDisplayTaskProps, ITask } from "../App";
 
-export default (props: any) => {
+export default (props: IDisplayTaskProps): JSX.Element => {
   const { tasks, toggleDone, deleteTask } = props;
 
-  const renderTaskHtml = (task: any) => {
+  const renderTaskHtml = (task: ITask): JSX.Element => {
     return (
       <span className={task.completed ? "is-completed" : ""}>{task.value}</span>
     );
   };
 
   /**
-   * @todo how to handle state changes in child component: react hooks will work well.
-   *  [important] no need, as im handling the action in the parent container. the click event is triggering
-   * [why] this helps me see how many buttons i want for the task. each button has its own needs so hence configs.
-   * more control on where i want the buttons to go and how many.
+   * [note] no need to handling state here like initially thought as im handling the action here but using the event in
+   * parent component.
+   * @param task
+   * @param index
    */
-  const renderTaskButtonsHtml = (task: any, index: number) => {
-    const configToggleDoneBtn = {
+  const renderTaskButtonsHtml = (task: ITask, index: number): JSX.Element => {
+    const configToggleDoneBtn: ITaskButtonProps = {
       action: () => toggleDone(index),
       type: "toggle",
       taskStatus: task.completed
     };
-    const configDelBtn = {
+    const configDelBtn: ITaskButtonProps = {
       action: () => deleteTask(task.id),
       type: "delete"
     };
 
     return (
       <span>
-        <TaskButton config={configDelBtn} />
-        <TaskButton config={configToggleDoneBtn} />
+        <TaskButton {...configDelBtn} />
+        <TaskButton {...configToggleDoneBtn} />
       </span>
     );
   };
@@ -38,8 +39,8 @@ export default (props: any) => {
   /**
    * [why] because im using map() i prefer to have something more flexible when it comes to handling the markup, hence renderTaskButtonsHtml()
    */
-  const renderHtml = (): JSX.Element[] => {
-    return tasks.map((task: ITask, index: number) => {
+  const renderHtml = (): JSX.Element =>
+    tasks.map((task: ITask, index: number) => {
       return (
         <article key={task.id} className="tdl-task">
           {renderTaskHtml(task)}
@@ -47,13 +48,12 @@ export default (props: any) => {
         </article>
       );
     });
-  };
 
   return <section>{renderHtml()}</section>;
 };
 
-interface ITask {
-  id: number;
-  value: string;
-  completed: boolean;
+export interface ITaskButtonProps {
+  action(): void;
+  type: string;
+  taskStatus?:boolean;
 }
