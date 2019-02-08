@@ -39,21 +39,26 @@ export default (props: IDisplayTaskProps): JSX.Element => {
   /**
    * [why] because im using map() i prefer to have something more flexible when it comes to handling the markup, hence renderTaskButtonsHtml()
    */
-  const renderHtml = (): JSX.Element =>
-    tasks.map((task: ITask, index: number) => {
-      return (
-        <article key={task.id} className="tdl-task">
-          {renderTaskHtml(task)}
-          {renderTaskButtonsHtml(task, index)}
-        </article>
-      );
+  const renderHtml = (): JSX.Element => {
+    const mappedTaskElements = tasks.map((task: ITask, index: number) => {
+      if (task.value !== "") {
+        return (
+          <article key={task.id} className="tdl-task">
+            {renderTaskHtml(task)}
+            {renderTaskButtonsHtml(task, index)}
+          </article>
+        );
+      }
     });
 
-  return <section>{renderHtml()}</section>;
+    return <section>{mappedTaskElements}</section>;
+  };
+
+  return renderHtml();
 };
 
 export interface ITaskButtonProps {
   action(): void;
   type: string;
-  taskStatus?:boolean;
+  taskStatus?: boolean;
 }

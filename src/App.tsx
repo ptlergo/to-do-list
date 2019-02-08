@@ -45,12 +45,8 @@ export class App extends React.Component<{}, IState> {
     this.setState({ tasks });
   };
 
-  public handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value } = e.currentTarget;
-    if (value) {
-      this.setState({ currentTask: value });
-    }
-  };
+  public handleChange = (e: React.ChangeEvent<HTMLInputElement>): void =>
+    this.setState({ currentTask: e.currentTarget.value });
 
   public handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -71,7 +67,7 @@ export class App extends React.Component<{}, IState> {
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className="container">
         <Form
           currentTask={this.state.currentTask}
           handleChange={this.handleChange}
@@ -110,7 +106,6 @@ export interface IFormProps {
   handleChange(e: any): void;
   handleSubmit(e: any): void;
 }
-
 
 export interface IDisplayTaskProps {
   tasks: any;
