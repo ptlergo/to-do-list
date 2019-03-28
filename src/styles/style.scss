@@ -22,16 +22,47 @@ body {
 //   font-size: 1.3rem;
 // }
 
-// .is-completed {
-//   text-decoration: line-through;
-//   color: $button-grey;
-// }
+.is-completed {
+  text-decoration: line-through;
+  color: $button-grey;
+}
 
 // .tdl-input {
 //   padding: 0.5rem;
 //   margin: 1rem 0;
 // }
 
-// .tdl-task {
-//   padding: 0.5rem;
-// }
+
+.tasks {
+  max-width: 50rem;
+  margin: auto;
+
+}
+
+.tdl-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2rem 0;
+
+  .btn-box {
+    display: flex;
+    width: 10rem;
+    justify-content: space-between;
+  }
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+form {
+  padding: 2rem 0;
+
+}
+
+.tdl-input {
+  margin-right: 1rem;
+  border: none;
+}
