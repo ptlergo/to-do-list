@@ -7,7 +7,7 @@ export default (props: IDisplayTaskProps): JSX.Element => {
 
   const renderTaskHtml = (task: ITask): JSX.Element => {
     return (
-      <span className={task.completed ? "is-completed" : ""}>{task.value}</span>
+      <p className={task.completed ? "is-completed" : ""}>{task.value}</p>
     );
   };
 
@@ -29,7 +29,7 @@ export default (props: IDisplayTaskProps): JSX.Element => {
     };
 
     return (
-      <span>
+      <span className="btn-box">
         <TaskButton {...configDelBtn} />
         <TaskButton {...configToggleDoneBtn} />
       </span>
@@ -43,15 +43,20 @@ export default (props: IDisplayTaskProps): JSX.Element => {
     const mappedTaskElements = tasks.map((task: ITask, index: number) => {
       if (task.value !== "") {
         return (
+          <div className="tasks">
+                <h2>Tasks:</h2>
+
           <article key={task.id} className="tdl-task">
             {renderTaskHtml(task)}
             {renderTaskButtonsHtml(task, index)}
           </article>
+          </div>
         );
       }
     });
 
-    return <section>{mappedTaskElements}</section>;
+    return <section className="container">
+    {mappedTaskElements}</section>;
   };
 
   return renderHtml();
