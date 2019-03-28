@@ -5,10 +5,10 @@ export default (props: ITaskButtonProps) => {
   const { action, type, taskStatus } = props;
 
   const renderToggleButton = (): any => (
-    <button onClick={action}>{taskStatus ? "undo" : "done"}</button>
+    <button className="btn btn-primary" onClick={action}>{taskStatus ? "undo" : "done"}</button>
   );
   const renderDefaultButton = (): any => (
-    <button onClick={action}>Delete</button>
+    <button className="btn btn-outline-danger" onClick={action}>Delete</button>
   );
 
 

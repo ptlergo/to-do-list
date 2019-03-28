@@ -22,7 +22,7 @@ export default (props: IFormProps) => {
           onChange={handleChange}
         />
        
-        <Button color="primary" className="btn" onClick={handleSubmit}>
+        <Button color="primary" className="btn btn-success" onClick={handleSubmit}>
           Add Task
         </Button>
       </InputGroup>
